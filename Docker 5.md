@@ -145,6 +145,7 @@ if __name__ == "__main__":
 - Create a Dockerfile listing necessary packages and modules, and name it `Dockerfile`.
 
 ```Dockerfile
+echo '
 FROM ubuntu
 RUN apt-get update -y
 RUN apt-get install python3 -y
@@ -152,7 +153,7 @@ RUN apt-get install python3-pip -y
 RUN pip3 install flask
 COPY . /app
 WORKDIR /app
-CMD python3 ./welcome.py
+CMD python3 ./welcome.py' > Dockerfile
 ```
 
 - Build Docker image from Dockerfile locally, tag it as `<Your_Docker_Hub_Account_Name>/<Your_Image_Name>:<Tag>` and explain steps of building. Note that repo name is the combination of `<Your_Docker_Hub_Account_Name>/<Your_Image_Name>`.

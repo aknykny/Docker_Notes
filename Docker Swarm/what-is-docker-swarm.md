@@ -1,6 +1,3 @@
-
-
-
 # What is Docker Swarm?
 
 <p align="center">
@@ -81,6 +78,18 @@ A swarm is made up of multiple nodes, which can be either physical or virtual ma
 ```bash
 ssh -i "key.pem" ec2-user@<PUBLIC_IP_ADDRESS>
 ```
+
+user data:
+#! /bin/bash
+
+yum update -y
+amazon-linux-extras install docker -y
+systemctl start docker
+systemctl enable docker
+usermod -a -G docker ec2-user
+# install docker-compose
+curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 ## Practice 2 - Set up a Swarm Cluster with Manager and Worker Nodes
 
